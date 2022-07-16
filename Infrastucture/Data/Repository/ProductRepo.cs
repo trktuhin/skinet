@@ -21,7 +21,7 @@ namespace Infrastucture.Data.Repository
             return await _context.ProductBrands.ToListAsync();
         }
 
-        public async Task<Product> GetProductByIdAsync(int id)
+        public async Task<Product?> GetProductByIdAsync(int id)
         {
             return await _context
             .Products
