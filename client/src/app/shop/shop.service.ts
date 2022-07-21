@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { IBrand } from '../shared/models/Brand';
 import { IPagination } from '../shared/models/Pagination';
+import { IProduct } from '../shared/models/Product';
 import { IProductType } from '../shared/models/ProductType';
 import { ShopParams } from '../shared/models/ShopParams';
 
@@ -36,6 +37,10 @@ export class ShopService {
           return response.body;
         })
       );
+  }
+
+  getProduct(id: number) {
+    return this.http.get<IProduct>(this.baseUrl + 'products/' + id);
   }
 
   getBrands() {
