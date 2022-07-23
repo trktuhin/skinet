@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <section class="col-3">
-            <h5 class="text-secondary ml-3">Sort By</h5>
+            <h5 class="text-secondary ml-3 mt-4 mb-3">Sort By</h5>
             <select class="custom-select mb-3" (change)="onSortSelected($event)">
                 <option [value]="item.value" *ngFor="let item of sortOptions" [selected]="item.value===shopParams.sort">
                     {{item.name}}
@@ -25,10 +25,11 @@
         </section>
 
         <section class="col-9">
-            <div class="d-flex justify-content-between align-items-center pb-2">
+            <div class="d-flex justify-content-between align-items-center pb-2"
+                *ngIf="busyService.busyRequestCount ===0">
                 <app-paging-header [pageNumber]="shopParams.pageNumber" [totalCount]="totalCount"
                     [pageSize]="shopParams.pageSize"></app-paging-header>
-                <div class="form-inline mt-2">
+                <div class="form-inline mt-2" *ngIf="products && products.length>0">
                     <input (keyup.enter)="onSearch()" type="text" #search class="form-control mr-2" style="width:300px;"
                         placeholder="Search">
                     <button (click)="onSearch()" class="btn btn-outline-primary my-2">Search</button>

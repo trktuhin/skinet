@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { BusyService } from '../core/services/busy.service';
 import { IBrand } from '../shared/models/Brand';
 import { IProduct } from '../shared/models/Product';
 import { IProductType } from '../shared/models/ProductType';
@@ -23,7 +24,7 @@ export class ShopComponent implements OnInit {
     { name: 'Price: High to Low', value: 'priceDesc' }
   ];
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService, public busyService: BusyService) { }
 
   ngOnInit(): void {
     this.getBrands();
